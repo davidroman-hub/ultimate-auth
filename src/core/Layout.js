@@ -15,7 +15,7 @@ const Layout = ({children}) => {
     return(
         <Fragment>
             {nav()}
-            <div className="container"
+            <div  className="container"
             >
                 {children}
             </div>
