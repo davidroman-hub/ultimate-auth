@@ -1,9 +1,12 @@
 import React from 'react';
+import Layout from './core/Layout'
 
-function App() {
+const App = () => {
   return (
- <h1>hola mundo</h1>
-  );
+    <Layout>
+      <h1>hello world</h1>
+    </Layout>
+  )
 }
 
 export default App;
