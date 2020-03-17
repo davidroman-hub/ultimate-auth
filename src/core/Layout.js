@@ -1,9 +1,9 @@
 import React,{Fragment} from 'react';
 import {Link, withRouter} from 'react-router-dom'
-import {isAuth} from '../auth/helpers'
+import {isAuth, signout} from '../auth/helpers'
 
 
-const Layout = ({children,match}) => {
+const Layout = ({children,match,history}) => {
 
 const isActive = path => {
     if(match.path === path) {
@@ -33,6 +33,19 @@ const isActive = path => {
                             <Link to='/signin' className=" nav-link" style={isActive('/signin')}> SignIn </Link>
                         </li>
                 </Fragment>
+                )}
+                  {isAuth () && (
+
+                        <li className="nav-item">
+                                <span className="nav-link"
+                                 style={{cursor: 'pointer', color: '#fff'}}
+                                 onClick={()=>{
+                                    signout(()=>{
+                                        history.push('/')
+                                    })
+                                }}>Sign out</span>
+                        </li>                 
+                      
                 )}
         </ul>
     )
