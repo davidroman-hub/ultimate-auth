@@ -1,5 +1,7 @@
 import React,{Fragment} from 'react';
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
+
+
 
 const Layout = ({children}) => {
     const nav = () => (
@@ -9,6 +11,9 @@ const Layout = ({children}) => {
                 </li>
                 <li className="nav-item">
                     <Link to='/signup' className="text-light nav-link"> SignUp </Link>
+                </li>
+                <li className="nav-item">
+                    <Link to='/signin' className="text-light nav-link"> SignIn </Link>
                 </li>
         </ul>
     )
@@ -23,4 +28,4 @@ const Layout = ({children}) => {
     )
 }
 
-export default Layout
+export default withRouter(Layout);

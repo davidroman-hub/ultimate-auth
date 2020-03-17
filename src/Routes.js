@@ -6,8 +6,9 @@ import App from './App'
 
 
 //Auth
-
 import Signup from './auth/Signup'
+import Signin from './auth/Signin'
+
 
 const Routes = () => {
 return (
@@ -15,6 +16,7 @@ return (
             <Switch>
                 <Route exact path="/" component={App}/>
                 <Route exact path="/signup" component={Signup}/>
+                <Route exact path="/signin" component={Signin}/>
             </Switch>
         </BrowserRouter>
     )
