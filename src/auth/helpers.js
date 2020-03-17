@@ -4,7 +4,7 @@ import cookie from 'js-cookie'
 export const setCookie = (key, value) => {
     if(window !== 'undefined' ){
         cookie.set(key, value,{
-            expire: 1
+            expires: 1
         })
     }
 }
@@ -13,7 +13,7 @@ export const setCookie = (key, value) => {
 export const removeCookie = (key) => {
     if(window !== 'undefined' ){
         cookie.remove(key, {
-            expire: 1
+            expires: 1
         })
     }
 }
@@ -44,12 +44,18 @@ export const removeLocalStorage = (key) => {
 
 // authenticate user by passing data to cookie and localstorage during signin
 //this method its very importan, we have to bring the response when the user has a succes auth for made some stuffs
-export const authenticate = (response, next) => {
-    console.log('Auth helper on signin response', response)    
-    setCookie('token', response.data.token)
-    setLocalStorage('user', response.data.user)
-    next()
-}
+export const authenticate = (response,next) => {
+    console.log('AUTHENTICATE HELPER ON SIGNIN RESPONSE', response);
+    setCookie('token', response.data.token);
+    setLocalStorage('user', response.data.user);
+    next();}
+
+// export const authenticate = (data, next) => {
+//     if(typeof window !== 'undefined') {
+//         localStorage.setItem('jwt', JSON.stringify(data))  //<-- setItem its for save
+//         next()
+//     }
+// };
 
 // access user in from localstorage
 
