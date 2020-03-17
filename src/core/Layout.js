@@ -34,6 +34,15 @@ const isActive = path => {
                         </li>
                 </Fragment>
                 )}
+                {isAuth () && (
+
+                    <li className="nav-item">
+                            <span className="nav-link"
+                             style={{cursor: 'pointer', color: 'red'}}
+                            >{isAuth().name}</span>
+                    </li>                 
+
+                )}
                   {isAuth () && (
 
                         <li className="nav-item">
