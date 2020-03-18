@@ -4,6 +4,9 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom'
 //Routes
 import App from './App'
 
+//Private
+import Private from './core/Private'
+import PrivateRoute from './auth/privateRoute'
 
 //Auth
 import Signup from './auth/Signup'
@@ -17,6 +20,7 @@ return (
                 <Route exact path="/" component={App}/>
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/signin" component={Signin}/>
+                <PrivateRoute exact path="/private" component={Private}/>
             </Switch>
         </BrowserRouter>
     )
