@@ -7,7 +7,8 @@ import App from './App'
 //Private
 import Private from './core/Private'
 import PrivateRoute from './auth/privateRoute'
-
+import Admin from './core/Admin'
+import AdminRoute from './auth/adminRoute'
 //Auth
 import Signup from './auth/Signup'
 import Signin from './auth/Signin'
@@ -21,6 +22,7 @@ return (
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/signin" component={Signin}/>
                 <PrivateRoute exact path="/private" component={Private}/>
+                <AdminRoute exact path="/admin" component={Admin}/>
             </Switch>
         </BrowserRouter>
     )
