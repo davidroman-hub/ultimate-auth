@@ -12,7 +12,7 @@ import AdminRoute from './auth/adminRoute'
 //Auth
 import Signup from './auth/Signup'
 import Signin from './auth/Signin'
-
+import Activate from './auth/Activate'
 
 const Routes = () => {
 return (
@@ -21,6 +21,7 @@ return (
                 <Route exact path="/" component={App}/>
                 <Route exact path="/signup" component={Signup}/>
                 <Route exact path="/signin" component={Signin}/>
+                <Route exact path="/auth/activate/:token" component={Activate}/>
                 <PrivateRoute exact path="/private" component={Private}/>
                 <AdminRoute exact path="/admin" component={Admin}/>
             </Switch>
