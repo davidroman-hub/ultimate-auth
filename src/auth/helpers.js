@@ -77,3 +77,16 @@ export const signout = next => {
     removeLocalStorage('user')
     next()
 }
+
+
+//// update user /////////
+
+export const updateUser = (res, next) =>{
+    console.log('update user in local storage', res)
+    if( typeof window !== 'undefined'){
+        let auth = JSON.parse(localStorage.getItem('user'))
+        auth = res.data
+        localStorage.setItem('user', JSON.stringify(auth))
+    }
+    next()
+}
