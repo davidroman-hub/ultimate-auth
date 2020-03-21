@@ -49,12 +49,12 @@ const Signin = ({history}) => {
         <form>
 
             <div className="form-group">
-                <lable className="text-muted">Email</lable>
+                <label className="text-muted">Email</label>
                 <input onChange={handleChange('email')} value={email} type="email" className="form-control" />
             </div>
 
             <div className="form-group">
-                <lable className="text-muted">Password</lable>
+                <label className="text-muted">Password</label>
                 <input onChange={handleChange('password')} value={password} type="password" className="form-control" />
             </div>
 
