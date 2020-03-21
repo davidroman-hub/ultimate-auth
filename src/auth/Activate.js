@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Layout from '../core/Layout';
 import axios from 'axios';
+import jwt from 'jsonwebtoken'
 import {isAuth} from './helpers'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
@@ -17,7 +18,12 @@ const Activate = ({match}) => {
     useEffect(()=>{
         let token = match.params.token
         // decode the token
-        console.log(token)
+        let {name} = jwt.decode(token) //<-- decode the name from the code for use in the pager
+       // console.log(token)
+        if(token){
+            setValues({ ...values,name:name, token })
+        }
+
     },[])
 
     const { name,token, show} = values;
@@ -26,20 +32,18 @@ const Activate = ({match}) => {
 
     const clickSubmit = event => {
         event.preventDefault();
-        setValues({ ...values, buttonText: 'Submitting' });
         axios({
             method: 'POST',
-            url: `${process.env.REACT_APP_API}/signup`,
+            url: `${process.env.REACT_APP_API}/account-activation`,
             data: {token}
         })
             .then(response => {
-                console.log('SIGNUP SUCCESS', response);
-                setValues({ ...values, buttonText: 'Submitted' });
+                console.log('ACTIVATION SUCCESS', response);
+                setValues({ ...values, show: false });
                 toast.success(response.data.message);
             })
             .catch(error => {
-                console.log('SIGNUP ERROR', error.response.data);
-                setValues({ ...values, buttonText: 'Submit' });
+                console.log('ACTIVATION ERROR', error.response.data.error);
                 toast.error(error.response.data.error);
             });
     };
@@ -47,8 +51,8 @@ const Activate = ({match}) => {
    
 const activationLink = () => {
  return (
-     <div>
-        <h1 className="p-5 text-center">Hey {name}, Ready to activate your account?</h1>
+     <div className="text-center">
+        <h1 className="p-5">Hey {name}, Ready to activate your account?</h1>
         <button className="btn btn-outline-primary" onClick={clickSubmit}>Activate Account</button>
     </div>
  )
