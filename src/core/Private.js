@@ -1,19 +1,53 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import Layout from '../core/Layout';
 import axios from 'axios';
-import {isAuth} from '../auth/helpers'
+import {isAuth, getCookie, signout} from '../auth/helpers'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
-const Private = () => {
+
+const Private = ({history}) => {
     const [values, setValues] = useState({
         role:'',
-        name: 'David',
-        email: 'jobdavidroman@gmail.com',
-        password: '12345678',
+        name: '',
+        email: '',
+        password: '',
         buttonText: 'Update'
     });
+
+const token = getCookie('token') //<-- we need this for send the token and populate
+
+
+useEffect(()=>{
+    loadProfile()
+},[])
+
+
+const loadProfile = () => {
+    axios({
+        method: 'GET',
+        url:`${process.env.REACT_APP_API}/user/${isAuth()._id}`,
+        headers: {
+            Authorization:`Bearer ${token}`
+        }
+    })
+    .then(response=>{
+        console.log('profile update', response) //<-- populate state
+        const {role, name , email} = response.data
+        setValues({...values, role, name, email})
+    })
+    .catch(error => {
+        console.log('PRofile update error', error.response.data.error)
+        if(error.response.status == 401){
+            signout(() => {
+                history.push('/'); //<-- for signout automatically
+            })
+        } 
+    })
+}
+
+
 
     const { role, name, email, password, buttonText } = values;
 
@@ -47,7 +81,7 @@ const Private = () => {
 
             <div className="form-group">
                 <label className="text-muted">Role</label>
-                <input  defaultValue={role} type="text" className="form-control" />
+                <input  defaultValue={role} type="text" className="form-control" disabled />
             </div>
 
             <div className="form-group">
@@ -57,7 +91,7 @@ const Private = () => {
 
             <div className="form-group">
                 <label className="text-muted">Email</label>
-                <input  defaultValue={email} type="email" className="form-control" />
+                <input  defaultValue={email} type="email" className="form-control"  disabled/>
             </div>
 
             <div className="form-group">
