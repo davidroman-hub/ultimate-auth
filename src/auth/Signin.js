@@ -63,6 +63,9 @@ const Signin = ({history}) => {
                     {buttonText}
                 </button>
             </div>
+            <div>
+               <Link className='text-muted' to='/auth/password/forgot' >Forgot password?</Link>
+            </div>
         </form>
     );
 
