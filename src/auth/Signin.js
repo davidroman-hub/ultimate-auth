@@ -63,9 +63,7 @@ const Signin = ({history}) => {
                     {buttonText}
                 </button>
             </div>
-            <div>
-               <Link className='text-muted' to='/auth/password/forgot' >Forgot password?</Link>
-            </div>
+            
         </form>
     );
 
@@ -77,6 +75,10 @@ const Signin = ({history}) => {
                 {isAuth() ? <Redirect to='/'/> : null}
                 <h1 className="p-5 text-center">Signin</h1>
                 {signinForm()}
+                <hr/>
+                <div>
+                     <Link className='text-muted' to='/auth/password/forgot' >Forgot password?</Link>
+                </div>
             </div>
         </Layout>
     );

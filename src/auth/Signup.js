@@ -73,6 +73,10 @@ const Signup = () => {
                 {isAuth() ? <Redirect to='/'/> : null}
                 <h1 className="p-5 text-center">Signup</h1>
                 {signupForm()}
+                <hr/>
+                <div>
+                     <Link className='text-muted' to='/signin' >Do you have account?</Link>
+                </div>
             </div>
         </Layout>
     );
