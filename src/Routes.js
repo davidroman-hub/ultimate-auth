@@ -14,6 +14,7 @@ import Signup from './auth/Signup'
 import Signin from './auth/Signin'
 import Activate from './auth/Activate'
 import Forgot from './auth/Forgot'
+import Reset from './auth/Reset'
 
 const Routes = () => {
 return (
@@ -26,6 +27,7 @@ return (
                 <PrivateRoute exact path="/private" component={Private}/>
                 <AdminRoute exact path="/admin" component={Admin}/>
                 <Route exact path="/auth/password/forgot" component={Forgot}/>
+                <Route exact path="/auth/password/reset/:token" component={Reset}/>
             </Switch>
         </BrowserRouter>
     )
