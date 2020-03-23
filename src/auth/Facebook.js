@@ -7,20 +7,20 @@ import axios from 'axios';
 const Facebook = ({informParent = f => f }) => {
     const responseFacebook = (response) => {
         console.log(response);
-        // axios({
-        //     method: 'POST',
-        //     url:`${process.env.REACT_APP_API}/google-login`,
-        //     data:{idToken: response.tokenId},
-        // })
-        // .then(response=>{
-        //     console.log('Google Signin Success', response)
-        //     // inform parent component //<-- we need to pass all the helpers before for we can save the user in the database as the others accounts.
-        //     informParent(response);
+        axios({
+            method: 'POST',
+            url:`${process.env.REACT_APP_API}/facebook-login`,
+            data:{userID: response.userID, accessToken: response.accessToken}, //<-- all this is on the console.log when someone try to sign in
+        })
+        .then(response=>{
+            console.log('Facebook Signin Success', response)
+            // inform parent component //<-- we need to pass all the helpers before for we can save the user in the database as the others accounts.
+            informParent(response);
         
-        // })
-        // .catch(error=>{
-        //     console.log('Google Signin Error', error.response)
-        // })
+        })
+        .catch(error=>{
+            console.log('Facebook Signin Error', error.response)
+        })
     }
 
 
