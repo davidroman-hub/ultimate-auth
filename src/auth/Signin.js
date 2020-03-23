@@ -9,8 +9,8 @@ import Google from './Google'
 
 const Signin = ({history}) => {
     const [values, setValues] = useState({
-        email: 'jobroman3@gmail.com',
-        password: '12345678',
+        email: '',
+        password: '',
         buttonText: 'Submit'
     });
 
