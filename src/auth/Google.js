@@ -3,7 +3,7 @@ import GoogleLogin from 'react-google-login'
 import axios from 'axios';
 
 
-const Google = () => {
+const Google = ({informParent = f => f }) => {
 
     const responseGoogle = (response) => {
         console.log(response.tokenId);
@@ -15,6 +15,8 @@ const Google = () => {
         .then(response=>{
             console.log('Google Signin Success', response)
             // inform parent component //<-- we need to pass all the helpers before for we can save the user in the database as the others accounts.
+            informParent(response);
+        
         })
         .catch(error=>{
             console.log('Google Signin Error', error.response)
