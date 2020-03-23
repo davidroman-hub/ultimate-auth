@@ -8,7 +8,7 @@ const App = () => {
       <div className='col-md-6 offset-md-3 text-center'>
         <h1 className="p-5">React Node Mongo DB Authentication Boilerplate</h1>
         <h2>MERN stack</h2>
-        <h3>Created by David Roman Aguirre</h3>
+        <h3>Created by  J. David Roman Aguirre</h3>
         <hr/>
         <p className='lead'>MERN stack login register system with account activation,
         login with Facebook and google as well as private and protected routes for authenticated user and users
