@@ -44,7 +44,7 @@ const Forgot = ({history}) => {
 
             <div className="form-group">
                 <label className="text-muted">Email</label>
-                <input onChange={handleChange('email')} value={email} type="email" className="form-control" />
+                <input onChange={handleChange('email')} value={email} type="email" className="form-control"  placeholder='Type your E-mail to recover your password'/>
             </div>
 
             <div>
@@ -61,6 +61,7 @@ const Forgot = ({history}) => {
             <div className="col-md-6 offset-md-3">
                 <ToastContainer />
                 <h1 className="p-5 text-center">Forgot password</h1>
+               
                 {passwordForgotForm()}
             </div>
         </Layout>
